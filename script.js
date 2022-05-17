@@ -45,7 +45,7 @@ function game(){
                 comp++;
             } else {
                 console.log("Tie!")
-            }
+            };
             console.log(`You: ${user}, Computer: ${comp}`);
         } else {
             alert ("Not valid! Game is reset.");
