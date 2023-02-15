@@ -5,6 +5,12 @@ let results = document.querySelector('.results');
 results.textContent = ''
 results.setAttribute('style', 'white-space: pre;')
 
+function newresult (text){
+    let r = document.createElement('div')
+    r.textContent = text
+    results.appendChild(r)
+}
+
 let user = 0;
 let comp = 0;
 
@@ -18,12 +24,12 @@ function game (){
         let winner = letsplay(playerSelection,computerSelection);
         if (winner[0] == "W"){
             user ++;
-            results.textContent += `\r\nYou: ${user}, Computer: ${comp}\n`;
+            newresult(`\r\nYou: ${user}, Computer: ${comp}\n`);
         } else if (winner[0] == "L"){
             comp++;
-            results.textContent += `\r\nYou: ${user}, Computer: ${comp}\n`;
+            newresult(`\r\nYou: ${user}, Computer: ${comp}\n`)
         } else {
-        results.textContent += `\r\nYou: ${user}, Computer: ${comp}\n`;
+            newresult(`\r\nYou: ${user}, Computer: ${comp}\n`)
         } ;
     };
 };
