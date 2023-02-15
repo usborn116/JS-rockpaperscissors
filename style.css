@@ -5,6 +5,11 @@ body{
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
+img{
+    width: 10vw;
+    height: auto;
+}
+
 .buttons{
     display: flex;
     justify-content: space-between;
@@ -13,7 +18,7 @@ body{
 }
 button{
     padding: 10px;
-    background-color: lavender;
+    background-color: lightsalmon;
     border-radius: 12px;
     font-size: 25px;
     border: 0px;
@@ -26,4 +31,17 @@ button:active{
 
 .log{
     display: flex;
+    justify-content: center;
+}
+
+.scoreboard, .result{
+    display: flex;
+    flex-direction: column;
+    width: 40vw;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.scoreboard h2, .result h2{
+    text-align: center;
 }

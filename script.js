@@ -2,14 +2,9 @@ const buttons = document.querySelectorAll('button');
 buttons.forEach(button => button.addEventListener('click', game));
 
 let results = document.querySelector('.results');
+let score = document.querySelector('.score');
 results.textContent = ''
 results.setAttribute('style', 'white-space: pre;')
-
-function newresult (text){
-    let r = document.createElement('div')
-    r.textContent = text
-    results.appendChild(r)
-}
 
 let user = 0;
 let comp = 0;
@@ -21,15 +16,16 @@ function game (){
         let x = (user>comp) ? `\r\nYou won the game! Final score--You: ${user}; Computer: ${comp}` : (user<comp) ? `You lost the game. Final score--Computer: ${comp}; You: ${user}`: `Game is tied! Final score--Computer: ${comp}; You: ${user}`;
         results.textContent += (x);
     } else {
+        results.textContent = ''
         let winner = letsplay(playerSelection,computerSelection);
         if (winner[0] == "W"){
             user ++;
-            newresult(`\r\nYou: ${user}, Computer: ${comp}\n`);
+            score.textContent = `\r\nYou: ${user}, Computer: ${comp}\n`;
         } else if (winner[0] == "L"){
             comp++;
-            newresult(`\r\nYou: ${user}, Computer: ${comp}\n`)
+            score.textContent = `\r\nYou: ${user}, Computer: ${comp}\n`
         } else {
-            newresult(`\r\nYou: ${user}, Computer: ${comp}\n`)
+            score.textContent = `\r\nYou: ${user}, Computer: ${comp}\n`
         } ;
     };
 };
@@ -37,7 +33,7 @@ function game (){
 
 function computerPlay(){
     let x = Math.floor(Math.random()*10);
-    return (x < 3) ? "rock" : (x > 7) ? "paper" : "scissors";
+    return (x < 4) ? "rock" : (x > 7) ? "paper" : "scissors";
 }
 
 
