@@ -7,14 +7,19 @@
     <script defer src="./script.js"></script>   
     <title>Document</title>
     <link rel="stylesheet" href="./style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+
 </head>
 <body>
     <h1>Let's Play Rock, Paper, Scissors!</h1>
     <h3>Choose your move:</h3>
+    <button class="reset">Start Over</button>
     <div class="buttons">
-    <button class="rock"><img src='./assets/rock.png' alt="rock"></button>
-    <button class="paper"><img src='./assets/paper.png' alt="paper"></button>
-    <button class="scissors"><img src='./assets/scissor.png' alt="scissor"></button>
+    <button id="rock" class="button rock"><img src='./assets/rock.png' alt="rock"></button>
+    <button id="paper" class="button paper"><img src='./assets/paper.png' alt="paper"></button>
+    <button id="scissors" class="button scissors"><img src='./assets/scissor.png' alt="scissor"></button>
     </div>
     <div class="log">
         <div class="scoreboard">
@@ -26,6 +31,8 @@
             <div class="results"></div>
         </div>
     </div>
-
+<footer>
+    <p>©Usborn Ocampo</p><img src='./assets/github-mark.png'>
+</footer>
 </body>
 </html>

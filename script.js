@@ -1,31 +1,50 @@
-const buttons = document.querySelectorAll('button');
+const buttons = document.querySelectorAll('.button');
 buttons.forEach(button => button.addEventListener('click', game));
+
+const resetbutton = document.querySelector('.reset')
+resetbutton.addEventListener('click', reset)
 
 let results = document.querySelector('.results');
 let score = document.querySelector('.score');
-results.textContent = ''
-results.setAttribute('style', 'white-space: pre;')
 
 let user = 0;
 let comp = 0;
 
+function reset (){
+    results.textContent = ''
+    score.textContent = ''
+    user = 0
+    comp = 0
+}
+
+function checkwinner(){
+    if (user == 5 || comp  == 5 ){
+        let x = (user>comp) ? `\r\nYou won!` : (user<comp) ? `You lost :(`: `It's a tie!`;
+        results.textContent += `${x} Click the "Start Over" button to begin a new game.`;
+    }
+}
+
 function game (){
-    const playerSelection = this.getAttribute('class');
+    const playerSelection = this.getAttribute('id');
     const computerSelection = computerPlay();
     if (user == 5 || comp  == 5 ){
-        let x = (user>comp) ? `\r\nYou won the game! Final score--You: ${user}; Computer: ${comp}` : (user<comp) ? `You lost the game. Final score--Computer: ${comp}; You: ${user}`: `Game is tied! Final score--Computer: ${comp}; You: ${user}`;
-        results.textContent += (x);
+        let x = (user>comp) ? `\r\nYou won!` : (user<comp) ? `You lost </3`: `It's a tie!`;
+        let y = 'Click the "Start Over" button to begin a new game.'
+        results.textContent = x+' '+y;
     } else {
         results.textContent = ''
         let winner = letsplay(playerSelection,computerSelection);
         if (winner[0] == "W"){
             user ++;
             score.textContent = `\r\nYou: ${user}, Computer: ${comp}\n`;
+            checkwinner();
         } else if (winner[0] == "L"){
             comp++;
             score.textContent = `\r\nYou: ${user}, Computer: ${comp}\n`
+            checkwinner();
         } else {
             score.textContent = `\r\nYou: ${user}, Computer: ${comp}\n`
+            checkwinner();
         } ;
     };
 };
@@ -38,7 +57,7 @@ function computerPlay(){
 
 
 function letsplay(playerSelection, computerSelection){
-    results.textContent += `\r\nYou: ${playerSelection}; Computer: ${computerSelection}\n`;
+    results.textContent += `\r\nYou chose: ${playerSelection}; Computer chose: ${computerSelection}. `;
     if (playerSelection == computerSelection){
         results.textContent += "This round is tied!\n"
         return "\r\nThis round is tied!/n"
@@ -55,7 +74,7 @@ function letsplay(playerSelection, computerSelection){
             results.textContent += "\r\nW! Paper beats rock.\n"
             return "W! Paper beats rock."
         } else {
-            results.textContent += "\r\nL! Scissors beats paper\n"
+            results.textContent += "\r\nL! Scissors beats paper.\n"
             return "L! Scissors beats paper"
         }
     } else if (playerSelection == "scissors") {
@@ -63,7 +82,7 @@ function letsplay(playerSelection, computerSelection){
             results.textContent += "\r\nL! Rock beats scissors.\n"
             return "L! Rock beats scissors." 
         } else {
-            results.textContent += "\r\nW! Scissors beats paper\n"
+            results.textContent += "\r\nW! Scissors beats paper.\n"
             return "W! Scissors beats paper"
         }
     } else {
